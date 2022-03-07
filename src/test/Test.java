@@ -13,26 +13,23 @@ public class Test {
         Test.quickSort(new int[]{3,1,2,7,7567});
     }
 
-    public static void quickSort( int[] array ){
+   public static void quickSort( int[] array ){
         int len ;
         if( array == null
-                || (len = array.length) == 0
-                || len == 1 ){
+                    || (len = array.length) == 0
+                    || len == 1 ){
             return ;
         }
-        sort(array , 0 , len-1);
-        System.out.println(Arrays.toString(array));
-    }
-
-    public static void sort( int[] array , int left , int right ){
+        sort(array , 0 , len-1) ;
+       System.out.println(Arrays.toString(array));
+   }
+   public static void sort( int[] array , int left , int right){
         if( left > right ){
-            return ;
+            return;
         }
-        //选一个基准数
         int base = array[left] ;
         int i = left , j = right ;
         while( i != j ){
-            //从右边 找到比基准数小的数
             while( array[j] >= base && i < j ){
                 j-- ;
             }
@@ -42,13 +39,13 @@ public class Test {
             }
         }
         if( i < j ){
-            int temp = array[j] ;
-            array[j] = array[i] ;
-            array[i] = temp ;
+            int temp = array[i] ;
+            array[i] = array[j] ;
+            array[j] = temp ;
         }
         array[left] = array[i] ;
         array[i] = base ;
-        sort(array , 0 , i-1);
+        sort(array , left , i-1);
         sort(array , i+1 , right);
-    }
+   }
 }
